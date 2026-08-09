@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+IDxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjN0MzQUVEIi8+IDxwYXRoIGQ9Ik0xOCAzMCBMMzIgMTggTDQ2IDMwIFY0NiBIMzggVjM2IEgyNiBWNDYgSDE4IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzLjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4gPHRleHQgeD0iMzIiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLFNlZ29lIFVJLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiPsKjPC90ZXh0PiA8L3N2Zz4=" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+IDxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjE0IiBmaWxsPSIjN0MzQUVEIi8+IDxwYXRoIGQ9Ik0xOCAzMCBMMzIgMTggTDQ2IDMwIFY0NiBIMzggVjM2IEgyNiBWNDYgSDE4IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIzLjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4gPHRleHQgeD0iMzIiIHk9IjQyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0ic3lzdGVtLXVpLFNlZ29lIFVJLEFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNmZmYiPsKjPC90ZXh0PiA8L3N2Zz4=">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifePlan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-top">
+            <div class="logo">
+                <div class="logo-icon">LP</div>
+                <span>LifePlan</span>
+            </div>
+
+            <nav>
+                <button class="navButton active" data-page="dashboard">
+                    <span class="nav-icon">⌂</span> Dashboard
+                </button>
+                <button class="navButton" data-page="accounts">
+                    <span class="nav-icon">◫</span> Accounts
+                </button>
+                <button class="navButton" data-page="income">
+                    <span class="nav-icon">£</span> Income
+                </button>
+                <button class="navButton" data-page="spend">
+                    <span class="nav-icon">💳</span> Spend
+                </button>
+                <button class="navButton" data-page="people">
+                    <span class="nav-icon">☺</span> People
+                </button>
+                <button class="navButton" data-page="strategy">
+                    <span class="nav-icon">◎</span> Strategy
+                </button>
+                <button class="navButton" data-page="events">
+                    <span class="nav-icon">▦</span> Events
+                </button>
+                <button class="navButton" data-page="plans">
+                    <span class="nav-icon">☰</span> Plans
+                </button>
+                <button class="navButton" data-page="results">
+                    <span class="nav-icon">↗</span> Results
+                </button>
+                <button class="navButton" data-page="reports">
+                    <span class="nav-icon">▤</span> Reports
+                </button>
+                <button class="navButton" data-page="assumptions">
+                    <span class="nav-icon">∑</span> Assumptions
+                </button>
+                <button class="navButton" data-page="settings">
+                    <span class="nav-icon">⚙</span> Settings
+                </button>
+                <button class="navButton nav-help" type="button" id="navHelpBtn" onclick="event.stopPropagation(); openHelp();">
+                    <span class="nav-icon">?</span> Help
+                </button>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-undo-row">
+                <button type="button" class="btn-undo" id="btnUndo" onclick="undoPlan()" title="Undo" disabled>↶</button>
+                <button type="button" class="btn-undo" id="btnRedo" onclick="redoPlan()" title="Redo" disabled>↷</button>
+            </div>
+            <div class="user-card" id="userCard" title="Double-click to edit plan name" ondblclick="openPlanNameEditor()">
+                <div class="avatar">D</div>
+                <div class="user-info">
+                    <div class="user-name">My Plan</div>
+                    <div class="user-plan">Plan</div>
+                </div>
+            </div>
+            <div class="version">V1.1.77</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+        <div id="pageContent">
+
+            <!-- ========== DASHBOARD (empty skeleton) ========== -->
+            <div class="page dashboard-page">
+
+                <header class="page-header">
+                    <div>
+                        <h1>Good morning, Daniel <span class="emoji">☀</span></h1>
+                        <p class="subtitle">Here's your financial overview</p>
+                    </div>
+                    <div class="header-actions">
+                        <div class="project-select">
+                            Project: <strong>Daniel & Belinda</strong> ▾
+                        </div>
+                        <button class="btn-primary">+ New Plan</button>
+                    </div>
+                </header>
+
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon plan">📅</div>
+                        <div class="card-label">Current Plan</div>
+                        <div class="card-value">—</div>
+                        <div class="card-meta">Last updated —</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon wealth">📈</div>
+                        <div class="card-label">Projected Wealth</div>
+                        <div class="card-value">—</div>
+                        <div class="card-meta">At age —</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon spend">💳</div>
+                        <div class="card-label">Monthly Spend</div>
+                        <div class="card-value">—</div>
+                        <div class="card-meta">In today's money</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon reserve">🛡</div>
+                        <div class="card-label">Cash Reserve</div>
+                        <div class="card-value">—</div>
+                        <div class="card-meta">— months</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon scenarios">🔀</div>
+                        <div class="card-label">Scenarios</div>
+                        <div class="card-value">—</div>
+                        <div class="card-meta">What-ifs created</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon event">📆</div>
+                        <div class="card-label">Next Event</div>
+                        <div class="card-value">—</div>
+                        <div class="card-meta">—</div>
+                    </div>
+                </div>
+
+                <div class="charts-row">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Projected Net Worth</h3>
+                            <select class="chart-select" disabled>
+                                <option>In today's money</option>
+                            </select>
+                        </div>
+                        <div class="chart-placeholder">
+                            <div class="placeholder-text">Net Worth Chart</div>
+                            <div class="placeholder-sub">Data will appear here</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Income vs Spend</h3>
+                            <div class="chart-legend">
+                                <span class="legend income">Income</span>
+                                <span class="legend spend">Spend</span>
+                                <span class="legend savings">Savings</span>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <div class="placeholder-text">Income vs Spend Chart</div>
+                            <div class="placeholder-sub">Data will appear here</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widgets-row">
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3>Accounts Summary</h3>
+                            <a href="#" class="link">View all accounts</a>
+                        </div>
+                        <div class="accounts-list">
+                            <div class="account-row">
+                                <div class="account-left">
+                                    <span class="dot cash"></span>
+                                    <span>Cash & Savings</span>
+                                </div>
+                                <div class="account-right">
+                                    <span class="amount">—</span>
+                                    <span class="pct">—</span>
+                                </div>
+                            </div>
+                            <div class="account-row">
+                                <div class="account-left">
+                                    <span class="dot investments"></span>
+                                    <span>Investments</span>
+                                </div>
+                                <div class="account-right">
+                                    <span class="amount">—</span>
+                                    <span class="pct">—</span>
+                                </div>
+                            </div>
+                            <div class="account-row">
+                                <div class="account-left">
+                                    <span class="dot pensions"></span>
+                                    <span>Pensions</span>
+                                </div>
+                                <div class="account-right">
+                                    <span class="amount">—</span>
+                                    <span class="pct">—</span>
+                                </div>
+                            </div>
+                            <div class="account-row">
+                                <div class="account-left">
+                                    <span class="dot property"></span>
+                                    <span>Property</span>
+                                </div>
+                                <div class="account-right">
+                                    <span class="amount">—</span>
+                                    <span class="pct">—</span>
+                                </div>
+                            </div>
+                            <div class="account-row">
+                                <div class="account-left">
+                                    <span class="dot liabilities"></span>
+                                    <span>Liabilities</span>
+                                </div>
+                                <div class="account-right">
+                                    <span class="amount negative">—</span>
+                                    <span class="pct">—</span>
+                                </div>
+                            </div>
+                            <div class="account-row total">
+                                <div class="account-left">
+                                    <strong>Net Worth</strong>
+                                </div>
+                                <div class="account-right">
+                                    <strong class="amount">—</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3>Recent Plans & Scenarios</h3>
+                            <a href="#" class="link">View all</a>
+                        </div>
+                        <div class="plans-list">
+                            <div class="plan-row">
+                                <div class="plan-left">
+                                    <span class="plan-icon">📄</span>
+                                    <div>
+                                        <div class="plan-name">—</div>
+                                        <div class="plan-meta">—</div>
+                                    </div>
+                                </div>
+                                <span class="badge">Current Plan</span>
+                            </div>
+                            <div class="plan-row">
+                                <div class="plan-left">
+                                    <span class="plan-icon">📄</span>
+                                    <div>
+                                        <div class="plan-name">—</div>
+                                        <div class="plan-meta">—</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="plan-row">
+                                <div class="plan-left">
+                                    <span class="plan-icon">📄</span>
+                                    <div>
+                                        <div class="plan-name">—</div>
+                                        <div class="plan-meta">—</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="plan-row">
+                                <div class="plan-left">
+                                    <span class="plan-icon">📄</span>
+                                    <div>
+                                        <div class="plan-name">—</div>
+                                        <div class="plan-meta">—</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget-card">
+                        <div class="widget-header">
+                            <h3>Upcoming Events</h3>
+                            <a href="#" class="link">View all</a>
+                        </div>
+                        <div class="events-list">
+                            <div class="event-row">
+                                <div class="event-left">
+                                    <span class="event-icon">📅</span>
+                                    <div>
+                                        <div class="event-name">—</div>
+                                        <div class="event-person">—</div>
+                                    </div>
+                                </div>
+                                <div class="event-right">
+                                    <div class="event-date">—</div>
+                                    <div class="event-when">—</div>
+                                </div>
+                            </div>
+                            <div class="event-row">
+                                <div class="event-left">
+                                    <span class="event-icon">📅</span>
+                                    <div>
+                                        <div class="event-name">—</div>
+                                        <div class="event-person">—</div>
+                                    </div>
+                                </div>
+                                <div class="event-right">
+                                    <div class="event-date">—</div>
+                                    <div class="event-when">—</div>
+                                </div>
+                            </div>
+                            <div class="event-row">
+                                <div class="event-left">
+                                    <span class="event-icon">📅</span>
+                                    <div>
+                                        <div class="event-name">—</div>
+                                        <div class="event-person">—</div>
+                                    </div>
+                                </div>
+                                <div class="event-right">
+                                    <div class="event-date">—</div>
+                                    <div class="event-when">—</div>
+                                </div>
+                            </div>
+                            <div class="event-row">
+                                <div class="event-left">
+                                    <span class="event-icon">📅</span>
+                                    <div>
+                                        <div class="event-name">—</div>
+                                        <div class="event-person">—</div>
+                                    </div>
+                                </div>
+                                <div class="event-right">
+                                    <div class="event-date">—</div>
+                                    <div class="event-when">—</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-bar">
+                    <button class="btn-insights">✨ Get insights from your plan</button>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<div id="slideBackdrop" class="slide-backdrop" onclick="closeSlide()"></div>
+<div id="slidePanel" class="slide-panel"></div>
+<div id="helpBackdrop" class="help-backdrop" onclick="closeHelp()" hidden></div>
+<aside id="helpPanel" class="help-panel" hidden aria-label="Help">
+  <div class="help-panel-inner">
+    <div class="help-top">
+      <button type="button" class="help-nav-btn" id="helpNavToggle" onclick="toggleHelpNav()" title="Navigate help">☰ Topics</button>
+      <div class="help-breadcrumb" id="helpBreadcrumb"></div>
+      <button type="button" class="btn-icon" onclick="closeHelp()" title="Close">✕</button>
+    </div>
+    <div class="help-nav-dropdown" id="helpNavDropdown" hidden></div>
+    <div class="help-body" id="helpBody"></div>
+  </div>
+</aside>
+<div id="expandOverlay" class="expand-overlay" onclick="if(event.target===this)closeExpand()"></div>
+
+<!-- Setup Wizard -->
+<div id="wizardOverlay" class="wizard-overlay" hidden>
+  <div class="wizard-modal">
+    <div class="wizard-progress"><div class="wizard-progress-bar" id="wizardProgressBar"></div></div>
+    <div id="wizardBody"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
